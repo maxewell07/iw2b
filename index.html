@@ -4,13 +4,178 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina inicil do projeto</title>
+    <link rel="stylesheet" href="bingo.css">
+    <title>Cartela de Bingo</title>
+
+
 </head>
 <body>
-    <h1>página inicial do projeto</h1>
+
+    <style>
+
+        
+    </style>
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>B</th>
+                <th>I</th>
+                <th>N</th>
+                <th>G</th>
+                <th>O</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td id="b1" class="tds" onclick="marcarSorteado(b1,this)">11</td>
+                <td class="tds">24</td>
+                <td class="tds">35</td>
+                <td class="tds">47</td>
+                <td class="tds">70</td>
+            </tr>
+
+            <tr class="tds">
+                <td class="tds">6</td>
+                <td class="tds">22</td>
+                <td class="tds">33</td>
+                <td class="tds">51</td>
+                <td class="tds">74</td>
+            </tr>
+
+            <tr>
+                <td class="tds">12</td>
+                <td class="tds">16</td>
+                <td class="tds">,,,</td>
+                <td class="tds">49</td>
+                <td class="tds">69</td>
+            </tr>
+
+            <tr>
+                <td class="tds">15</td>
+                <td class="tds">19</td>
+                <td class="tds">44</td>
+                <td class="tds">59</td>
+                <td class="tds">63</td>
+            </tr>
+
+            <tr>
+                <td class="tds">13</td>
+                <td class="tds">30</td>
+                <td class="tds">42</td>
+                <td class="tds">56</td>
+                <td class="tds">61</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="GerarCartela()">
+        Gerar Cartela
+    </button>
+
     <script>
-        alert("Bem Vindo usuário")
+        colunaB = []
+        colunaI = []
+        colunaN = []
+        colunaG = []
+        colunaO = []
+
+        function GerarArray(NumeroInicial, quantidade) {
+            var retorno = []
+            for (var i = 0; i < quantidade; i++) {
+                retorno.push(NumeroInicial)
+                NumeroInicial++;
+            }
+            return retorno
+        }
+        CartelaB = GerarArray(1,15)
+        console.log("Array da coluna B");
+        console.log(CartelaB)
+
+        CartelaI = GerarArray(16,15)
+        console.log("Array da coluna I");
+        console.log(CartelaI)
+
+        CartelaN = GerarArray(31,15)
+        console.log("Array da coluna N");
+        console.log(CartelaN)
+
+        CartelaG = GerarArray(46,15)
+        console.log("Array da coluna G");
+        console.log(CartelaG)
+
+        CartelaO = GerarArray(61,15)
+        console.log("Array da coluna O");
+        console.log(CartelaO)
+
+        function GerarCartela() {
+
+            for (var i = 1; 1 <= 5; i++){
+                var td = document.getElementById("g"=i)
+            }
+                
+            }
+            
+        
+
+        var b2 = document.getElementById("b2")
+        var b1 = document.getElementById("b1")
+        
+        function marcarSorteado(nomeId, elemento){
+            console.log("elemento")
+            console.log(elemento)
+            console.log(nomeId)
+            elemento.style.backgroundColor = "#FF0000";
+        }
+
+        if(elemento.style.backgroundColor == "FF0000"){
+            alert("cor laranja")
+        }
+
     </script>
-    
 </body>
 </html>
+
+
+
+
+
+
+<style>
+    body, html{
+               margin: 0%;
+               padding: 0%;
+               height: 100%;
+               background:cadetblue;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+ }
+     table{ border: 1px; color: bisque;
+        margin: 13px 13px;
+
+   }
+    td, th{
+        font-size: 55px;
+        padding: 3px 15px;
+        text-align: center;
+        border: 2px solid;
+
+    }
+
+    div{
+        background-image: url('cartela.jng');
+        width: 476px;
+        height: 515px;
+    }
+                                    
+</style>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pisca botao</title>
+    <link rel="stylesheet" href="button.css">
+</head>
+<body>
+    
+    <button onclick="pisca()" id="button">
+        aperte o botao e pisque o cuzinho
+    </button>
+
+    <script>
+        function pisca()
+        {
+            var button = document.getElementById("button")
+            if(button.style.backgroundColor == 'red')
+            {
+                button.style.backgroundColor = 'blue'
+            }
+            else
+            {
+                button.style.backgroundColor = 'red'
+            }
+            
+            }
+            
+    </script>
+</body>
+</html>
+
+
+
+
+
+<style>
+
+html{
+    height: 100%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+button{
+    width: 500px;
+    height: 150px;
+}
+</style>
