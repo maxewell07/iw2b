@@ -54,10 +54,10 @@
         <tbody>
             <tr>
                 <td id="b1" onclick="marcarsorteado('b1', this)">1</td>
-                <td id="i1">17</td>
-                <td id="n1">33</td>
-                <td id="g1">60</td>
-                <td id="o1">64</td>
+                <td id="i1" onclick="marcarsorteado('i1', this)">17</td>
+                <td id="n1" onclick="marcarsorteado('n1', this)">33</td>
+                <td id="g1" onclick="marcarsorteado('g1', this)">60</td>
+                <td id="o1" onclick="marcarsorteado('g1', this)">64</td>
             </tr>
             <tr>
                 <td id="b2">4</td>
@@ -105,6 +105,8 @@
         var cartelaO = [];//61 a 75
         
         function GerarCartela(){
+
+            cartelaB = GerarArray
             for (var i = 1;i <= 5; i++){
                 var td = document.getElementById("b"+i)
                 td.innerText = cartelaB[i]
@@ -176,6 +178,30 @@
             if(elemento.style.backgroundColo == "red")
             {
                 alert("a cor é a red")
+            }
+
+
+            function NumeroAleatorio(numeroMinmo, numeroMaximo){
+                var retorno = Math.Floor(Math.radom() * numeroMaximo)
+                if (retorno > 0 && retorno >= numeroMinimo && retorno <= numeroMaximo){
+                    return retorno
+                } else{
+                    return numeroaleatorio(numeroMinmo, numeroMaximo)
+                }
+            }
+
+            function MisturarArray(array){
+                var aleatorio
+                var cont = array.length
+                var auxiliar
+                while (conr != 0){
+                    aleatorio = NumeroAleatorio(1, array.length)
+                    cont--
+                    auxiliar = array[cont]
+                    array[cont] = array[leatorio]
+                    array[aleatorio] = auxiliar
+                }
+                return array
             }
 
         }
