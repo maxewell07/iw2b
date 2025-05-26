@@ -1,93 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulários</title>
-    <style>
-        .erro {
-            border: 2px solid red;
-        }
-        .mensagem-erro {
-            color: red;
-            font-size: 0.9em;
-        }
-    </style>
+    <title>Formulario</title>
 </head>
 <body>
-
     <form action="salvar.html" method="post" onsubmit="return ValidarFormulario()">
-        <div>
-            <label>Cep</label>
-            <input type="text" name="cep" id="cep" class="campo" />
-            <div id="erro-cep" class="mensagem-erro"></div>
-        </div><br>
-
-        <div>
-            <label>Endereço</label>
-            <input type="text" name="endereco" id="endereco" class="campo" />
-            <div id="erro-endereco" class="mensagem-erro"></div>
-        </div><br>
-
-        <div>
-            <label>Número</label>
-            <input type="text" name="numero" id="numero" class="campo" />
-            <div id="erro-numero" class="mensagem-erro"></div>
-        </div><br>
-
-        <div>
-            <label>Bairro</label>
-            <input type="text" name="bairro" id="bairro" class="campo" />
-            <div id="erro-bairro" class="mensagem-erro"></div>
-        </div><br>
-
-        <div>
-            <label>Cidade</label>
-            <input type="text" name="cidade" id="cidade" class="campo" />
-            <div id="erro-cidade" class="mensagem-erro"></div>
-        </div><br>
-
-        <div>
-            <label>Estado</label>
-            <input type="text" name="estado" id="estado" class="campo" />
-            <div id="erro-estado" class="mensagem-erro"></div>
-        </div><br>
-
-        <button type="submit" id="botao">Enviar dados</button>
+        <label>Cep</label>
+        <input type="text" name="cep" id="cep" class="campo" /><br><br>
+        <label>Endereço</label>
+        <input type="text" name="endereco" id="endereco" class="campo" /> <br><br>
+        <label>Número</label>
+        <input type="text" name="numero" id="numero" class="campo" /><br><br>
+        <label>Bairro</label>
+        <input type="text" name="bairro" id="bairro" class="campo" /><br><br>
+        <label>Cidade</label>
+        <input type="text" name="cidade" id="cidade" class="campo" /> <br><br>
+        <label>Estado</label>
+        <input type="text" name="estado" id="estado" class="campo" /> <br><br>
+        <button id="botao" class="botao" type="submit">
+            Enviar dados
+        </button>
     </form>
 
     <script>
-        function ValidarFormulario() {
-            const campos = ['cep', 'endereco', 'numero', 'bairro', 'cidade', 'estado'];
-            let formValido = true;
-
-            campos.forEach(function(campo) {
-                const input = document.getElementById(campo);
-                const erroDiv = document.getElementById('erro-' + campo);
-
-                if (input.value.trim() === '') {
-                    input.classList.add('erro');
-                    erroDiv.textContent = 'Campo não pode estar em branco';
-                    formValido = false;
-                } else {
-                    input.classList.remove('erro');
-                    erroDiv.textContent = '';
-                }
-            });
-
-            return formValido;
+        function ValidarFormulario()
+        {
+            var cep = document.getElementById('cep')
+            if (cep.value == "")
+            {
+                alert('Campo CEP deve ser preenchido')
+                return false
+            }
+        
+        
+            var Endereço = document.getElementById('Endereço')
+            if (Endereço.value == "")
+        
+            var endereco = document.getElementById('endereco')
+            if (endereco.value == "")
+            {
+                alert('Campo Endereço deve ser preenchido')
+                return false
+            }
+        
+        
+    
+            var numero = document.getElementById('numero')
+            if (numero.value == "")
+            {
+                alert('Campo Numero deve ser preenchido')
+                return false
+            }
+        
+    
+        
+        
+            var bairro = document.getElementById('bairro')
+            if (bairro.value == "")
+            {
+                alert('Campo Bairro deve ser preenchido')
+                return false
+            }
+        
+        
+        
+        
+            var cidade = document.getElementById('cidade')
+            if (cidade.value == "")
+            {
+                alert('Campo Cidade deve ser preenchido')
+                return false
+            }
+        
+        
+        
+        
+            var estado = document.getElementById('estado')
+            if (estado.value == "")
+            {
+                alert('Campo Estado deve ser preenchido')
+                return false
+            }
         }
-
-        // Remover borda vermelha ao digitar
-        document.querySelectorAll('.campo').forEach(function(campo) {
-            campo.addEventListener('input', function() {
-                if (campo.value.trim() !== '') {
-                    campo.classList.remove('erro');
-                    const erroDiv = document.getElementById('erro-' + campo.id);
-                    erroDiv.textContent = '';
-                }
-            });
-        });
     </script>
 </body>
-</html>
