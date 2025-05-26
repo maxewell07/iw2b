@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários</title>
+    <style>
+        .erro {
+            border: 2px solid red;
+        }
+        .mensagem-erro {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="salvar.html" method="post" onsubmit="return ValidarFormulario()">
+        <div>
+            <label>Cep</label>
+            <input type="text" name="cep" id="cep" class="campo" />
+            <div id="erro-cep" class="mensagem-erro"></div>
+        </div><br>
+
+        <div>
+            <label>Endereço</label>
+            <input type="text" name="endereco" id="endereco" class="campo" />
+            <div id="erro-endereco" class="mensagem-erro"></div>
+        </div><br>
+
+        <div>
+            <label>Número</label>
+            <input type="text" name="numero" id="numero" class="campo" />
+            <div id="erro-numero" class="mensagem-erro"></div>
+        </div><br>
+
+        <div>
+            <label>Bairro</label>
+            <input type="text" name="bairro" id="bairro" class="campo" />
+            <div id="erro-bairro" class="mensagem-erro"></div>
+        </div><br>
+
+        <div>
+            <label>Cidade</label>
+            <input type="text" name="cidade" id="cidade" class="campo" />
+            <div id="erro-cidade" class="mensagem-erro"></div>
+        </div><br>
+
+        <div>
+            <label>Estado</label>
+            <input type="text" name="estado" id="estado" class="campo" />
+            <div id="erro-estado" class="mensagem-erro"></div>
+        </div><br>
+
+        <button type="submit" id="botao">Enviar dados</button>
+    </form>
+
+    <script>
+        function ValidarFormulario() {
+            const campos = ['cep', 'endereco', 'numero', 'bairro', 'cidade', 'estado'];
+            let formValido = true;
+
+            campos.forEach(function(campo) {
+                const input = document.getElementById(campo);
+                const erroDiv = document.getElementById('erro-' + campo);
+
+                if (input.value.trim() === '') {
+                    input.classList.add('erro');
+                    erroDiv.textContent = 'Campo não pode estar em branco';
+                    formValido = false;
+                } else {
+                    input.classList.remove('erro');
+                    erroDiv.textContent = '';
+                }
+            });
+
+            return formValido;
+        }
+
+        // Remover borda vermelha ao digitar
+        document.querySelectorAll('.campo').forEach(function(campo) {
+            campo.addEventListener('input', function() {
+                if (campo.value.trim() !== '') {
+                    campo.classList.remove('erro');
+                    const erroDiv = document.getElementById('erro-' + campo.id);
+                    erroDiv.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
