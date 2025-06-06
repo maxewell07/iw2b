@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Objetos em JavaScript</title>
+</head>
+<body>
+
+  <div id="modeloCarro"></div>
+  <div id="coresCarros"></div>
+  <div id="cidadePessoa"></div>
+
+  <script>
+    var carro = {
+      marca: "Toyota",
+      modelo: "Corolla",
+      ano: 2020
+    };
+
+    // Exibe modelo do carro dentro do div modeloCarro
+    document.getElementById("modeloCarro").innerText = "Modelo do carro: " + carro.modelo;
+
+    // Atualiza o ano e adiciona cor
+    carro.ano = 2024;
+    carro.cor = "vermelho";
+
+    var carro2 = {
+      marca: "Honda",
+      modelo: "Civic",
+      ano: 2023,
+      cor: "azul"
+    };
+
+    var carro3 = {
+      marca: "Ford",
+      modelo: "Fiesta",
+      ano: 2022,
+      cor: "preto"
+    };
+
+    var coresTexto = "Cores dos carros: " + carro.cor + ", " + carro2.cor + ", " + carro3.cor;
+    document.getElementById("coresCarros").innerText = coresTexto;
+
+    var pessoa = {
+      nome: "Ana",
+      endereco: {
+        rua: "Rua das Palmeiras",
+        numero: 789,
+        cidade: "Salvador"
+      }
+    };
+
+    var cidade = pessoa.endereco.cidade;
+    document.getElementById("cidadePessoa").innerText = "Cidade da pessoa: " + cidade;
+  </script>
+
+</body>
+</html>

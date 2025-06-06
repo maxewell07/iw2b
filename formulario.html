@@ -1,89 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Formulário</title>
+    <style>
+        
+        .erro {
+            border: 2px solid red;
+        }
+    </style>
 </head>
 <body>
-    <form action="salvar.html" method="post" onsubmit="return ValidarFormulario()">
-        <label>Cep</label>
-        <input type="text" name="cep" id="cep" class="campo" /><br><br>
-        <label>Endereço</label>
-        <input type="text" name="endereco" id="endereco" class="campo" /> <br><br>
-        <label>Número</label>
-        <input type="text" name="numero" id="numero" class="campo" /><br><br>
-        <label>Bairro</label>
-        <input type="text" name="bairro" id="bairro" class="campo" /><br><br>
-        <label>Cidade</label>
-        <input type="text" name="cidade" id="cidade" class="campo" /> <br><br>
-        <label>Estado</label>
-        <input type="text" name="estado" id="estado" class="campo" /> <br><br>
-        <button id="botao" class="botao" type="submit">
-            Enviar dados
-        </button>
+
+    <h2>Formulário de Endereço</h2>
+
+    <form onsubmit="return ValidarFormulario()" method="post" action="salvar.html">
+        <label>CEP:</label><br>
+        <input type="text" id="cep"><br><br>
+
+        <label>Endereço:</label><br>
+        <input type="text" id="endereco"><br><br>
+
+        <label>Número:</label><br>
+        <input type="text" id="numero"><br><br>
+
+        <label>Bairro:</label><br>
+        <input type="text" id="bairro"><br><br>
+
+        <label>Cidade:</label><br>
+        <input type="text" id="cidade"><br><br>
+
+        <label>Estado:</label><br>
+        <input type="text" id="estado"><br><br>
+
+        <button type="submit">Enviar</button>
     </form>
 
     <script>
-        function ValidarFormulario()
-        {
-            var cep = document.getElementById('cep')
-            if (cep.value == "")
-            {
-                alert('Campo CEP deve ser preenchido')
-                return false
+        function ValidarFormulario() {
+        
+            var cep = document.getElementById('cep');
+            var endereco = document.getElementById('endereco');
+            var numero = document.getElementById('numero');
+            var bairro = document.getElementById('bairro');
+            var cidade = document.getElementById('cidade');
+            var estado = document.getElementById('estado');
+
+          
+            var tudoOk = true;
+
+            
+            if (cep.value.trim() === "") {
+                cep.classList.add("erro");
+                tudoOk = false;
+            } else {
+                cep.classList.remove("erro");
             }
-        
-        
-            var Endereço = document.getElementById('Endereço')
-            if (Endereço.value == "")
-        
-            var endereco = document.getElementById('endereco')
-            if (endereco.value == "")
-            {
-                alert('Campo Endereço deve ser preenchido')
-                return false
+
+            if (endereco.value.trim() === "") {
+                endereco.classList.add("erro");
+                tudoOk = false;
+            } else {
+                endereco.classList.remove("erro");
             }
-        
-        
-    
-            var numero = document.getElementById('numero')
-            if (numero.value == "")
-            {
-                alert('Campo Numero deve ser preenchido')
-                return false
+
+            if (numero.value.trim() === "") {
+                numero.classList.add("erro");
+                tudoOk = false;
+            } else {
+                numero.classList.remove("erro");
             }
-        
-    
-        
-        
-            var bairro = document.getElementById('bairro')
-            if (bairro.value == "")
-            {
-                alert('Campo Bairro deve ser preenchido')
-                return false
+
+            if (bairro.value.trim() === "") {
+                bairro.classList.add("erro");
+                tudoOk = false;
+            } else {
+                bairro.classList.remove("erro");
             }
-        
-        
-        
-        
-            var cidade = document.getElementById('cidade')
-            if (cidade.value == "")
-            {
-                alert('Campo Cidade deve ser preenchido')
-                return false
+
+            if (cidade.value.trim() === "") {
+                cidade.classList.add("erro");
+                tudoOk = false;
+            } else {
+                cidade.classList.remove("erro");
             }
-        
-        
-        
-        
-            var estado = document.getElementById('estado')
-            if (estado.value == "")
-            {
-                alert('Campo Estado deve ser preenchido')
-                return false
+
+            if (estado.value.trim() === "") {
+                estado.classList.add("erro");
+                tudoOk = false;
+            } else {
+                estado.classList.remove("erro");
             }
+
+            
+            if (!tudoOk) {
+                alert("Por favor, preencha todos os campos!");
+                return false;
+            }
+
+            
+            return true;
         }
     </script>
+
 </body>
+</html>
