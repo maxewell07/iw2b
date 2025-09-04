@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lista de Alunos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+    .container-header {
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+    }
+    table {
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+    #btnNovoAluno {
+      margin-right: 0.5rem;
+    }
+    .input-group > input {
+      border-top-left-radius: 0.375rem;
+      border-bottom-left-radius: 0.375rem;
+    }
+    .input-group > button {
+      border-radius: 0.375rem;
+    }
+    .actions-btns button {
+      margin-right: 0.3rem;
+    }
+    .table thead {
+      background: linear-gradient(45deg, #4e73df, #224abe);
+      color: white;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Gestão de Alunos</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container container-header">
+    <h2>Lista de Alunos</h2>
+    <p class="text-muted">Gerencie seus alunos com facilidade</p>
+  </div>
+
+
+  <div class="container mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-success" id="btnNovoAluno">+ Novo Aluno</button>
+      <div class="input-group w-50">
+        <input type="text" id="pesquisa" class="form-control" placeholder="Pesquisar por nome ou RA" />
+        <button class="btn btn-primary" id="btnPesquisar" type="button">Buscar</button>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-striped rounded" id="tabelaAlunos">
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th>Nome</th>
+          <th>RA</th>
+          <th>Data de Nascimento</th>
+          <th style="width: 18%;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Ana Silveira</td>
+          <td>RA0898</td>
+          <td>15/09/2009</td>
+          <td class="actions-btns">
+            <button class="btn btn-warning btn-sm btnEditar">Editar</button>
+            <button class="btn btn-danger btn-sm btnExcluir">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Yuri Alberto</td>
+          <td>RA0345</td>
+          <td>20/09/2012</td>
+          <td class="actions-btns">
+            <button class="btn btn-warning btn-sm btnEditar">Editar</button>
+            <button class="btn btn-danger btn-sm btnExcluir">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Maxwell Souza</td>
+          <td>RA0348</td>
+          <td>17/06/2008</td>
+          <td class="actions-btns">
+            <button class="btn btn-warning btn-sm btnEditar">Editar</button>
+            <button class="btn btn-danger btn-sm btnExcluir">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>Pedro Almeida</td>
+          <td>RA0156</td>
+          <td>30/08/2014</td>
+          <td class="actions-btns">
+            <button class="btn btn-warning btn-sm btnEditar">Editar</button>
+            <button class="btn btn-danger btn-sm btnExcluir">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function atualizarNumeros() {
+      const linhas = document.querySelectorAll("#tabelaAlunos tbody tr");
+      linhas.forEach((linha, index) => {
+        linha.cells[0].textContent = index + 1;
+      });
+    }
+
+    document.getElementById("btnNovoAluno").addEventListener("click", () => {
+      const nome = prompt("Nome do aluno:");
+      if (!nome) {
+        alert("Nome é obrigatório!");
+        return;
+      }
+      const ra = prompt("RA do aluno:");
+      if (!ra) {
+        alert("RA é obrigatório!");
+        return;
+      }
+      const dataNascimento = prompt("Data de nascimento (dd/mm/aaaa):");
+      if (!dataNascimento) {
+        alert("Data de nascimento é obrigatória!");
+        return;
+      }
+      const tbody = document.querySelector("#tabelaAlunos tbody");
+      const novaLinha = document.createElement("tr");
+      novaLinha.innerHTML = `
+        <td></td>
+        <td>${nome}</td>
+        <td>${ra}</td>
+        <td>${dataNascimento}</td>
+        <td class="actions-btns">
+          <button class="btn btn-warning btn-sm btnEditar">Editar</button>
+          <button class="btn btn-danger btn-sm btnExcluir">Excluir</button>
+        </td>
+      `;
+      tbody.appendChild(novaLinha);
+      atualizarNumeros();
+    });
+
+    document.getElementById("btnPesquisar").addEventListener("click", () => {
+      const texto = document.getElementById("pesquisa").value.toLowerCase();
+      const linhas = document.querySelectorAll("#tabelaAlunos tbody tr");
+      linhas.forEach(linha => {
+        const nome = linha.cells[1].textContent.toLowerCase();
+        const ra = linha.cells[2].textContent.toLowerCase();
+        linha.style.display = (nome.includes(texto) || ra.includes(texto)) ? "" : "none";
+      });
+    });
+
+    document.getElementById("pesquisa").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        document.getElementById("btnPesquisar").click();
+      }
+    });
+
+    document.querySelector("#tabelaAlunos tbody").addEventListener("click", (e) => {
+      if (e.target.classList.contains("btnExcluir")) {
+        if (confirm("Tem certeza que deseja excluir este aluno?")) {
+          e.target.closest("tr").remove();
+          atualizarNumeros();
+        }
+      }
+      if (e.target.classList.contains("btnEditar")) {
+        const linha = e.target.closest("tr");
+        const nomeAtual = linha.cells[1].textContent;
+        const raAtual = linha.cells[2].textContent;
+        const dataAtual = linha.cells[3].textContent;
+        const nomeNovo = prompt("Editar nome:", nomeAtual);
+        if (!nomeNovo) {
+          alert("Nome é obrigatório!");
+          return;
+        }
+        const raNovo = prompt("Editar RA:", raAtual);
+        if (!raNovo) {
+          alert("RA é obrigatório!");
+          return;
+        }
+        const dataNova = prompt("Editar data de nascimento (dd/mm/aaaa):", dataAtual);
+        if (!dataNova) {
+          alert("Data de nascimento é obrigatória!");
+          return;
+        }
+        linha.cells[1].textContent = nomeNovo;
+        linha.cells[2].textContent = raNovo;
+        linha.cells[3].textContent = dataNova;
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
